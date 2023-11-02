@@ -1,0 +1,29 @@
+[package]
+edition = "2021"
+name = "rsapi"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
+napi = { version = "2", default-features = false, features = [
+    "napi4",
+    "tokio_rt",
+    "serde-json",
+    "async",
+    "experimental",
+] }
+napi-derive = "2"
+
+dunce = "1.0.2"
+rayon = "1.5"
+log = "0.4"
+
+lsq-encryption = { path = "../../lsq-encryption", features = ["napi"] }
+rsapi-impl = { path = "../../rsapi-impl", features = ["napi"] }
+
+[build-dependencies]
+napi-build = "2"
+static_vcruntime = "2"

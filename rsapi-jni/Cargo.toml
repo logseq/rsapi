@@ -1,0 +1,20 @@
+[package]
+name = "rsapi-jni"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rsapi"
+crate_type = ["cdylib"]
+
+[dependencies]
+thiserror = "1"
+tokio = { version = "1", features = ["default", "fs", "rt", "rt-multi-thread"] }
+jni = { version = "0.21.1", default-features = false }
+log = "0.4"
+
+lsq-encryption = { path = "../lsq-encryption" }
+rsapi-impl = { path = "../rsapi-impl" }
+
+[target.'cfg(target_os = "android")'.dependencies]
+android_log-sys = { version = "0.3" }

@@ -1,0 +1,21 @@
+
+[workspace]
+members = [
+    "sync",
+    "lsq-encryption",
+    "rsapi-impl",
+    "rsapi-jni",
+    "packages/rsapi",
+]
+resolver = "2"
+
+[profile.release-jni]
+inherits = "release"
+strip = true         # Automatically strip symbols from the binary.
+opt-level = "z"      # Optimize for size.
+lto = true           # Enable link time optimization
+codegen-units = 1    # Reduce parallel code generation units
+panic = "unwind"
+
+[profile.release]
+lto = true

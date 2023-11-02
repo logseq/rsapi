@@ -1,0 +1,22 @@
+{
+  "name": "@logseq/rsapi-linux-x64-gnu",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.1",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "rsapi.linux-x64-gnu.node",
+  "files": [
+    "rsapi.linux-x64-gnu.node"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  }
+}

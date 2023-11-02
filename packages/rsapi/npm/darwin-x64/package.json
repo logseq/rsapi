@@ -1,0 +1,22 @@
+{
+  "name": "@logseq/rsapi-darwin-x64",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.1",
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "rsapi.darwin-x64.node",
+  "files": [
+    "rsapi.darwin-x64.node"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  }
+}

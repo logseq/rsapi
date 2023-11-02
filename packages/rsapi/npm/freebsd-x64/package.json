@@ -1,0 +1,22 @@
+{
+  "name": "@logseq/rsapi-freebsd-x64",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.1",
+  "os": [
+    "freebsd"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "rsapi.freebsd-x64.node",
+  "files": [
+    "rsapi.freebsd-x64.node"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  }
+}
