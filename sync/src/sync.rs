@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
-use std::sync::Arc;
+// use std::sync::Arc;
 use std::time::Duration;
 
 use serde_json::json;
@@ -94,7 +94,7 @@ impl SyncClient {
             let mut builder = reqwest::Client::builder()
                 .user_agent("Logseq-sync/0.3")
                 .connection_verbose(false)
-                .dns_resolver(Arc::new(crate::doh::DoHResolver))
+                // .dns_resolver(Arc::new(crate::doh::DoHResolver))
                 .timeout(Duration::from_secs(30))
                 .connect_timeout(Duration::from_secs(15))
                 .http2_keep_alive_interval(Duration::from_secs(10))

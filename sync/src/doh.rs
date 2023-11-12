@@ -37,8 +37,7 @@ pub struct DoHResolver;
 
 impl Resolve for DoHResolver {
     fn resolve(&self, name: Name) -> Resolving {
-        // also 1.1.1.1
-        let url = format!("https://1.12.12.12/dns-query?name={}&type=A", name);
+        let url = format!("https://1.1.1.1/dns-query?name={}&type=A", name);
         Box::pin(async move {
             let lock = QUERY_LOCK.lock().await;
 
