@@ -1,5 +1,6 @@
 {
-  "name": "file-sync-rs",
+  "name": "rsapi",
+  "packageManager": "yarn@4.0.1",
   "version": "0.0.0",
   "description": "Node & Rust bindings",
   "author": "Logseq devs <info@logseq.com>",
@@ -42,6 +43,5 @@
     "ts-node": "^10.9.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
-  },
-  "packageManager": "yarn@4.0.1"
+  }
 }
