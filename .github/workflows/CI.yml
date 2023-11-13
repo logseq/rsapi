@@ -265,6 +265,7 @@ jobs:
           npm config set provenance true
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           # yarn lerna publish from-package --yes
+          yarn workspaces foreach -A -j 1 run version
           ./script/publish.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
