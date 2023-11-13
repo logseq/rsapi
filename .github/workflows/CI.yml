@@ -187,7 +187,7 @@ jobs:
         shell: bash
 
       - name: 'Install dependencies'
-        run: yarn install --ignore-scripts --frozen-lockfile --registry https://registry.npmjs.org --network-timeout 300000
+        run: yarn install --immutable --mode=skip-build
 
       - name: Build in docker
         uses: addnab/docker-run-action@v3
@@ -231,7 +231,7 @@ jobs:
           key: npm-cache-ubuntu-latest-publish-${{ hashFiles('yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install --ignore-scripts --registry https://registry.npmjs.org --network-timeout 300000
+        run: yarn install --immutable --mode=skip-build
 
       - name: Download all artifacts
         uses: actions/download-artifact@v2
