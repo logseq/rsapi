@@ -34,13 +34,5 @@
     "build:debug": "napi build --platform",
     "version": "napi version"
   },
-  "gitHead": "388449dd337290a6e69ad3f3c8b5134c91f7445a",
-  "optionalDependencies": {
-    "@logseq/rsapi-win32-x64-msvc": "0.0.76",
-    "@logseq/rsapi-darwin-x64": "0.0.76",
-    "@logseq/rsapi-linux-x64-gnu": "0.0.76",
-    "@logseq/rsapi-linux-arm64-gnu": "0.0.76",
-    "@logseq/rsapi-darwin-arm64": "0.0.76",
-    "@logseq/rsapi-freebsd-x64": "0.0.76"
-  }
+  "gitHead": "388449dd337290a6e69ad3f3c8b5134c91f7445a"
 }

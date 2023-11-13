@@ -265,7 +265,6 @@ __metadata:
   resolution: "@logseq/rsapi@workspace:packages/rsapi"
   dependencies:
     "@napi-rs/cli": "npm:2.16.5"
-    cross-env: "npm:^7.0.3"
   languageName: unknown
   linkType: soft
 
