@@ -267,7 +267,6 @@ jobs:
         if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
         run: |
           npm config set provenance true
-          find ./packages/ -type d -maxdepth 1 -exec cp LICENSE {} \;
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           yarn lerna publish from-package --no-verify-access --yes
         env:
