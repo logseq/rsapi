@@ -266,7 +266,7 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           # yarn lerna publish from-package --yes
           yarn workspaces foreach -A -j 1 run version
-          ./script/publish.sh
+          ./scripts/publish.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
