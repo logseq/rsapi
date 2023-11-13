@@ -242,15 +242,11 @@ jobs:
         run: ls -R artifacts
         shell: bash
 
-      - name: Move artifacts
-        run: yarn artifacts
-
-      - name: List artifacts
-        run: ls -R artifacts
-        shell: bash
+      # BUGGY
+      #- name: Move artifacts
+      #  run: yarn artifacts
 
       - name: Move artifacts manually
-        # mv artifacts/bindings-aarch64-pc-windows-msvc/rsapi/rsapi.win32-arm64-msvc.node packages/rsapi/npm/win32-arm64-msvc/
         run: |
           mv artifacts/bindings-x86_64-unknown-linux-gnu/rsapi/rsapi.linux-x64-gnu.node packages/rsapi/npm/linux-x64-gnu/
           mv artifacts/bindings-x86_64-pc-windows-msvc/rsapi/rsapi.win32-x64-msvc.node packages/rsapi/npm/win32-x64-msvc/
@@ -268,7 +264,8 @@ jobs:
         run: |
           npm config set provenance true
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-          yarn lerna publish from-package --yes
+          # yarn lerna publish from-package --yes
+          ./script/publish.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
