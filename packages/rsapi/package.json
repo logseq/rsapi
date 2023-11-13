@@ -1,6 +1,5 @@
 {
   "name": "@logseq/rsapi",
-  "private": false,
   "publishConfig": {
     "access": "public"
   },
@@ -24,16 +23,17 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@napi-rs/cli": "^2.2.0"
+    "@napi-rs/cli": "2.16.5",
+    "cross-env": "^7.0.3"
   },
   "engines": {
     "node": ">= 10"
   },
   "scripts": {
-    "artifacts": "napi artifacts",
+    "artifacts": "napi artifacts  -d ../../artifacts",
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
-    "prepublishOnly": "napi prepublish -t npm",
+    "prepublishOnly": "napi prepublish",
     "version": "napi version"
   }
 }
