@@ -23,8 +23,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@napi-rs/cli": "2.16.5",
-    "cross-env": "^7.0.3"
+    "@napi-rs/cli": "2.16.5"
   },
   "engines": {
     "node": ">= 10"
@@ -33,7 +32,15 @@
     "artifacts": "napi artifacts  -d ../../artifacts",
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
-    "prepublishOnly": "napi prepublish",
     "version": "napi version"
+  },
+  "gitHead": "388449dd337290a6e69ad3f3c8b5134c91f7445a",
+  "optionalDependencies": {
+    "@logseq/rsapi-win32-x64-msvc": "0.0.76",
+    "@logseq/rsapi-darwin-x64": "0.0.76",
+    "@logseq/rsapi-linux-x64-gnu": "0.0.76",
+    "@logseq/rsapi-linux-arm64-gnu": "0.0.76",
+    "@logseq/rsapi-darwin-arm64": "0.0.76",
+    "@logseq/rsapi-freebsd-x64": "0.0.76"
   }
 }
