@@ -14,6 +14,7 @@ darwin-x64
 linux-arm64-gnu
 linux-x64-gnu
 win32-x64-msvc
+freebsd-x64-gnu
 ```
 
 ## How to Build
