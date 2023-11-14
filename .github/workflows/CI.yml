@@ -262,7 +262,7 @@ jobs:
       - name: Lerna publish
         if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
         run: |
-          npm config set provenance true
+          # npm config set provenance true
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           # yarn lerna publish from-package --yes
           yarn workspaces foreach -A -j 1 run version
