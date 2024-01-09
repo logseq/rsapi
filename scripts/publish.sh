@@ -1,8 +1,8 @@
 #!/bin/bash
 
+set -ex
 
-DIRS=$(find ./packages -type d -maxdepth 1 | sort -r)
-
+DIRS=$(find ./packages -type d | sort -r)
 
 for dir in $DIRS
 do
