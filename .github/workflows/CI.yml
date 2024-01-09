@@ -261,8 +261,8 @@ jobs:
         if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-          yarn workspaces foreach -A -j 1 run version
-          yarn workspaces foreach -A -j 1 run prepublishOnly
+          # yarn workspaces foreach -A -j 1 run version --no-gh-release
+          yarn workspaces foreach -A -j 1 run prepublishOnly --no-gh-release
           # yarn lerna publish from-package --yes
           ./scripts/publish.sh
         env:
