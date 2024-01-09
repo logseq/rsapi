@@ -103,7 +103,7 @@ jobs:
               set -e &&
               cargo install cargo-zigbuild &&
               cargo zigbuild -p rsapi --target x86_64-unknown-linux-gnu.2.17 --release &&
-              cp -v target/x86_64-unknown-linux-gnu/release/librsapi.so  ./packages/rsapi/rsapi.linux-x64-gnu.node
+              cp -v target/x86_64-unknown-linux-gnu/release/librsapi.so  ./packages/rsapi/rsapi.linux-x64-gnu.node &&
               strip -x packages/*/*.node
           - host: macos-latest
             architecture: x64
@@ -151,6 +151,9 @@ jobs:
           profile: minimal
           override: true
           target: ${{ matrix.settings.target }}
+
+      - name: Install Zig
+        uses: goto-bus-stop/setup-zig@v2
 
       - name: Generate Cargo.lock
         uses: actions-rs/cargo@v1
