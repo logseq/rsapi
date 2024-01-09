@@ -9,7 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 # Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
 napi = { version = "2", default-features = false, features = [
-    "napi4",
+    "napi9",
     "tokio_rt",
     "serde-json",
     "async",
@@ -17,8 +17,8 @@ napi = { version = "2", default-features = false, features = [
 ] }
 napi-derive = "2"
 
-dunce = "1.0.2"
-rayon = "1.5"
+dunce = "1.0.4"
+rayon = "1.8"
 log = "0.4"
 
 lsq-encryption = { path = "../../lsq-encryption", features = ["napi"] }

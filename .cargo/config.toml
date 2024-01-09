@@ -10,5 +10,16 @@ rustflags = [
 	"-C", "link-args=/NODEFAULTLIB:libucrt.lib /NODEFAULTLIB:libucrtd.lib /NODEFAULTLIB:ucrtd.lib",
 ]
 
+#[target.aarch64-apple-darwin]
+#linker = "lld"
+
 [target.aarch64-unknown-linux-gnu]
 linker = "aarch64-linux-gnu-gcc"
+
+# See-also: https://github.com/napi-rs/napi-rs/issues/1688
+# No idea why this is needed, but it is.
+[target.x86_64-apple-darwin]
+rustflags = ["-C", "link-args=-Wl,-undefined,dynamic_lookup"]
+
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-args=-Wl,-undefined,dynamic_lookup"]
