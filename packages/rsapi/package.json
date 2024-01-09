@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.79",
+  "version": "0.0.80",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -32,7 +32,7 @@
     "artifacts": "napi artifacts  -d ../../artifacts",
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
+    "prepublishOnly": "napi prepublish",
     "version": "napi version"
-  },
-  "gitHead": "388449dd337290a6e69ad3f3c8b5134c91f7445a"
+  }
 }

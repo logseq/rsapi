@@ -261,9 +261,8 @@ jobs:
         if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-          yarn lerna publish from-package --no-verify-access --yes
-          # yarn lerna publish from-package --yes
           # yarn workspaces foreach -A -j 1 run version
+          yarn lerna publish from-package --yes
           # ./scripts/publish.sh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
