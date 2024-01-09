@@ -273,7 +273,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@logseq/rsapi@workspace:packages/rsapi"
   dependencies:
-    "@napi-rs/cli": "npm:2.16.5"
+    "@napi-rs/cli": "npm:^3.0.0-alpha.33"
   languageName: unknown
   linkType: soft
 
@@ -293,15 +293,6 @@ __metadata:
   bin:
     node-pre-gyp: bin/node-pre-gyp
   checksum: 2b24b93c31beca1c91336fa3b3769fda98e202fb7f9771f0f4062588d36dcc30fcf8118c36aa747fa7f7610d8cf601872bdaaf62ce7822bb08b545d1bbe086cc
-  languageName: node
-  linkType: hard
-
-"@napi-rs/cli@npm:2.16.5":
-  version: 2.16.5
-  resolution: "@napi-rs/cli@npm:2.16.5"
-  bin:
-    napi: scripts/index.js
-  checksum: 21edc1976f3d5c363fa039b761fb5e1fc17aefd8832a015bcb3fbd5469637634000fc5c977573adf68d7e71542c44af8b21e2da9594b211eb3afc1b7e735b070
   languageName: node
   linkType: hard
 
