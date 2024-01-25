@@ -52,7 +52,8 @@ impl log::Log for AndroidLogger {
                 log::Level::Debug => LogPriority::DEBUG,
                 log::Level::Trace => LogPriority::VERBOSE,
             };
-            let message = format!("{}\0", record.args());
+            // NOTE: Android logcat doesn't support %, so we replace it with _
+            let message = format!("{}\0", record.args()).replace("%", "_");
             let tag = b"rsapi-jni\0";
             unsafe {
                 __android_log_print(
