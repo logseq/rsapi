@@ -403,8 +403,8 @@ impl SyncClient {
         let bucket = Bucket::new(region(), bucket());
 
         let key = self.s3_prefix.clone().unwrap() + &*random_string(12);
-
-        let presign_url = s3_presign::put(&credentials, &bucket, &key, 60 * 10)
+        // 1 hour expiration
+        let presign_url = s3_presign::put(&credentials, &bucket, &key, 60 * 60)
             .ok_or(SyncError::Custom("can not generate presign url".to_owned()))?;
 
         let content = content.to_owned().to_vec();
