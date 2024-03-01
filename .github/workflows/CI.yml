@@ -23,6 +23,7 @@ on:
 jobs:
   build-freebsd:
     runs-on: macos-12
+    if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
     name: Build FreeBSD
     steps:
       - uses: actions/checkout@v3
@@ -78,11 +79,11 @@ jobs:
       fail-fast: false
       matrix:
         settings:
-          - host: macos-12
+          - host: macos-latest
             architecture: x64
             target: 'x86_64-apple-darwin'
             build: |
-              yarn build
+              yarn build --target x86_64-apple-darwin
               strip -x packages/*/*.node
           - host: windows-latest
             architecture: x64
@@ -96,7 +97,7 @@ jobs:
           #    yarn lerna exec "yarn build --target aarch64-pc-windows-msvc" --concurrency 1 --stream --no-prefix
           #  target: 'aarch64-pc-windows-msvc'
 
-          - host: ubuntu-20.04
+          - host: ubuntu-latest
             architecture: x64
             target: 'x86_64-unknown-linux-gnu'
             build: >-
@@ -114,7 +115,7 @@ jobs:
               export CXX=$(xcrun -f clang++);
               SYSROOT=$(xcrun --sdk macosx --show-sdk-path);
               export CFLAGS="-isysroot $SYSROOT -isystem $SYSROOT";
-              npx lerna exec "yarn build --target aarch64-apple-darwin" --concurrency 1 --stream --no-prefix
+              yarn build --target aarch64-apple-darwin
               strip -x packages/*/*.node
           - host: ubuntu-20.04
             architecture: x64
@@ -208,6 +209,7 @@ jobs:
 
   publish:
     name: Publish
+    if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
     runs-on: ubuntu-latest
     needs:
       - build
