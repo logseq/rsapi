@@ -266,7 +266,8 @@ jobs:
           # yarn workspaces foreach -A -j 1 run version --no-gh-release
           yarn workspaces foreach -A -j 1 run prepublishOnly --no-gh-release
           # yarn lerna publish from-package --yes
-          ./scripts/publish.sh
+          # ./scripts/publish.sh
+          cd paackages/rsapi && npm publish --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
