@@ -148,7 +148,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         if: ${{ !matrix.settings.docker }}
         with:
-          toolchain: nightly
+          toolchain: nightly-2023-12-31
           profile: minimal
           override: true
           target: ${{ matrix.settings.target }}
