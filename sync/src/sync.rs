@@ -429,7 +429,7 @@ impl SyncClient {
         if code != 200 {
             let body = resp.bytes().await?;
             let content = String::from_utf8_lossy(&body);
-            if content.contains("ExpiredToken") {
+            if content.contains("ExpiredToken") || content.contains("Request has expired") {
                 return Err(SyncError::ExpiredToken);
             } else {
                 return Err(SyncError::Custom(format!(
