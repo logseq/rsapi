@@ -2,6 +2,8 @@
 `cargo build --release`
 
 # How to use
+- requirement: encrypted-graph-data, contact the Logseq team to fetch it.
+
 ```
 > <path-to-rsapi-repo>/target/release/decrypt-cli -h
 Usage: decrypt-cli [OPTIONS] --pwd <password> --dir <PATH>
