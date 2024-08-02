@@ -31,7 +31,7 @@ fn read_keys<P: AsRef<path::Path>>(path: P) -> Keys {
             };
             Keys {
                 encrypted_secret_key: encrypted_secret_key.to_owned(),
-                public_key: public_key.to_owned(),
+                _public_key: public_key.to_owned(),
             }
         }
         _ => {
