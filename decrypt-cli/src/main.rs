@@ -40,14 +40,30 @@ fn read_keys<P: AsRef<path::Path>>(path: P) -> Keys {
     }
 }
 
-fn decrypt_file<P: AsRef<path::Path>>(path: P, secret_key: &str, dst: P) {
+fn decrypt_file<P: AsRef<path::Path>>(
+    path: P,
+    secret_key: &str,
+    filename_encrypt_key: [u8; 32],
+    dst: P,
+) {
     let file_content = fs::read(&path).unwrap();
     let decrypted_content = lsq_encryption::decrypt_with_x25519(secret_key, &file_content)
         .expect(&format!("Failed to decrypt: {:?}", path.as_ref()));
     let mut dst_path = path::PathBuf::from(dst.as_ref());
-    // TODO: decrypt path
-    let filename = path.as_ref().file_name().unwrap();
-    dst_path.push(filename);
+    let filename = path
+        .as_ref()
+        .file_name()
+        .unwrap()
+        .to_string_lossy()
+        .into_owned();
+    let decrypted_filename =
+        lsq_encryption::decrypt_filename(&filename, &filename_encrypt_key).unwrap_or(filename);
+    dst_path.push(decrypted_filename);
+    let parent = dst_path.parent();
+    if parent.is_some() {
+        fs::create_dir_all(parent.unwrap())
+            .expect(&format!("Failed to create dir: {:?}", parent.unwrap()));
+    }
     fs::write(&dst_path, decrypted_content).expect(&format!("Failed to write: {:?}", dst_path));
     println!("Generated {:?}", dst_path);
 }
@@ -91,6 +107,8 @@ fn main() -> Result<(), io::Error> {
     )
     .expect("Failed to decrypt secret_key, wrong password");
     let secret_key = std::str::from_utf8(&secret_key_).unwrap();
+    let filename_encrypt_key =
+        lsq_encryption::to_raw_x25519_key(secret_key).expect("Failed to get filename encrypt key");
     println!("secret key: {}", secret_key);
     println!("dst dir: {:?}", dst);
     fs::create_dir_all(dst).expect(&format!("Failed to create dir: {:?}", dst));
@@ -100,7 +118,7 @@ fn main() -> Result<(), io::Error> {
             Ok(entry) => {
                 let path = entry.path();
                 if path.is_file() && path.file_name().unwrap() != "keys.edn" {
-                    decrypt_file(path, secret_key, dst.clone());
+                    decrypt_file(path, secret_key, filename_encrypt_key, dst.clone());
                 }
             }
             _ => {}
