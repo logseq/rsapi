@@ -6,6 +6,7 @@ members = [
     "rsapi-impl",
     "rsapi-jni",
     "packages/rsapi",
+    "decrypt-cli",
 ]
 resolver = "2"
 
