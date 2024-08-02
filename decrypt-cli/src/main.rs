@@ -1,8 +1,7 @@
 use clap::{value_parser, Arg, Command};
 use std::fs;
-use std::io;
 use std::path;
-use std::result::Result;
+
 #[derive(Debug)]
 struct Keys {
     encrypted_secret_key: String,
@@ -68,7 +67,7 @@ fn decrypt_file<P: AsRef<path::Path>>(
     println!("Generated {:?}", dst_path);
 }
 
-fn main() -> Result<(), io::Error> {
+fn main() {
     let matches = Command::new("decrypt cli")
         .arg(
             Arg::new("password")
@@ -124,6 +123,4 @@ fn main() -> Result<(), io::Error> {
             _ => {}
         }
     }
-
-    Ok(())
 }
