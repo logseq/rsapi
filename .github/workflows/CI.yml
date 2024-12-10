@@ -22,7 +22,7 @@ on:
 
 jobs:
   build-freebsd:
-    runs-on: macos-12
+    runs-on: macos-14
     if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
     name: Build FreeBSD
     steps:
@@ -235,7 +235,7 @@ jobs:
         run: yarn install --immutable --mode=skip-build
 
       - name: Download all artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
