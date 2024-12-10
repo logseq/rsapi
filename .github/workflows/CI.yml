@@ -22,7 +22,7 @@ on:
 
 jobs:
   build-freebsd:
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     if: "startsWith(github.event.head_commit.message, 'chore(release): publish')"
     name: Build FreeBSD
     steps:
@@ -37,7 +37,7 @@ jobs:
           RUSTUP_IO_THREADS: 1
         with:
           operating_system: freebsd
-          version: '13.2'
+          version: '14.2'
           memory: 13G
           cpu_count: 3
           hypervisor: qemu
