@@ -254,7 +254,7 @@ jobs:
           mv artifacts/bindings-x86_64-apple-darwin/rsapi/rsapi.darwin-x64.node packages/rsapi/npm/darwin-x64/
           mv artifacts/bindings-aarch64-apple-darwin/rsapi/rsapi.darwin-arm64.node packages/rsapi/npm/darwin-arm64/
           mv artifacts/bindings-aarch64-unknown-linux-gnu/rsapi/rsapi.linux-arm64-gnu.node packages/rsapi/npm/linux-arm64-gnu/
-          mv artifacts/bindings-freebsd-amd64/rsapi/rsapi.freebsd-x64.node packages/rsapi/npm/freebsd-x64/
+          # mv artifacts/bindings-freebsd-amd64/rsapi/rsapi.freebsd-x64.node packages/rsapi/npm/freebsd-x64/
 
       - name: List packages
         run: ls -R packages
