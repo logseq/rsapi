@@ -139,11 +139,14 @@ impl Graph {
         if data.starts_with(b"-----BEGIN AGE ENCRYPTED FILE-----")
             || data.starts_with(b"age-encryption.org/v1\n")
         {
-            let decrypted = lsq_encryption::decrypt_with_x25519(&self.age_secret_key, data)?;
-            return Ok(decrypted.to_vec().into());
+            if let Ok(decrypted) = lsq_encryption::decrypt_with_x25519(&self.age_secret_key, data) {
+                Ok(decrypted.to_vec().into())
+            } else {
+                Ok(data.into())
+            }
+        } else {
+            Ok(data.into())
         }
-
-        Ok(data.into())
     }
 
     pub async fn get_files_meta<P0: AsRef<Path>, P1: AsRef<str>, PS>(
