@@ -48,7 +48,7 @@ jobs:
             sudo pkg install -y -f curl node libnghttp2 npm
             sudo npm install -g yarn --ignore-scripts
             curl https://sh.rustup.rs -sSf --output rustup.sh
-            sh rustup.sh -y --default-toolchain nightly-2023-12-31
+            sh rustup.sh -y --default-toolchain nightly-2024-12-09
             source "$HOME/.cargo/env"
             echo "~~~~ rustc --version ~~~~"
             rustc --version
@@ -148,7 +148,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         if: ${{ !matrix.settings.docker }}
         with:
-          toolchain: nightly-2023-12-31
+          toolchain: nightly-2024-12-09
           profile: minimal
           override: true
           target: ${{ matrix.settings.target }}
