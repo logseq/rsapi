@@ -129,7 +129,7 @@ jobs:
               yarn lerna exec "yarn build --target aarch64-unknown-linux-gnu" --concurrency 1 --stream --no-prefix
               aarch64-linux-gnu-strip packages/*/*.node
 
-    name: stable - ${{ matrix.settings.target }} - node@18
+    name: stable - ${{ matrix.settings.target }} - node@20
     runs-on: ${{ matrix.settings.host }}
 
     steps:
@@ -139,7 +139,7 @@ jobs:
         uses: actions/setup-node@v3
         if: ${{ !matrix.settings.docker }}
         with:
-          node-version: 18
+          node-version: 20
           check-latest: true
           cache: yarn
           architecture: ${{ matrix.settings.architecture }}
@@ -163,22 +163,22 @@ jobs:
           command: generate-lockfile
 
       - name: Cache cargo registry
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cargo/registry
-          key: ${{ matrix.settings.target }}-node@18-cargo-registry-trimmed-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ matrix.settings.target }}-node@20-cargo-registry-trimmed-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Cache cargo index
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.cargo/git
-          key: ${{ matrix.settings.target }}-node@18-cargo-index-trimmed-${{ hashFiles('**/Cargo.lock') }}
+          key: ${{ matrix.settings.target }}-node@20-cargo-index-trimmed-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Cache NPM dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
-          key: npm-cache-${{ matrix.settings.target }}-node@18-${{ hashFiles('yarn.lock') }}
+          key: npm-cache-${{ matrix.settings.target }}-node@20-${{ hashFiles('yarn.lock') }}
 
       - name: Setup toolchain
         run: ${{ matrix.settings.setup }}
@@ -221,12 +221,12 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           check-latest: true
           cache: yarn
 
       - name: Cache NPM dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: npm-cache-ubuntu-latest-publish-${{ hashFiles('yarn.lock') }}
